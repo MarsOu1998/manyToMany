@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="PO.Course"  table="课程">
+        <id name="CourseId" column="课程编号" >
+            <generator class="assigned"></generator>
+        </id>
+        <property name="CourseName" column="课程名称" ></property>
+
+        <set name="teachers" table="教师任课表" lazy="false" inverse="false">
+            <key column="课程编号"></key>
+            <many-to-many class="PO.Teacher" column="教师编号"/>
+        </set>
+
+    </class>
+</hibernate-mapping>
